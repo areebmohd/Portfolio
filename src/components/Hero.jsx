@@ -10,8 +10,8 @@ const Hero = () => {
                     <h1 className="hero-name">Mohd Areeb</h1>
                     <h2 className="hero-role">Software <span className="gradient-text">Developer</span></h2>
                     <p className="hero-summary">
-                        I craft accessible, pixel-perfect, and performant web and mobile applications.
-                        Merging creativity with code to build modern solutions for businesses and individuals.
+                        I have 2+ years of hands-on experience in building modern web and mobile applications.
+                        I am skilled in developing tech solutions for businesses and individuals.
                     </p>
                     <div className="hero-cta">
                         <a href="#projects" className="btn-primary">View Work</a>

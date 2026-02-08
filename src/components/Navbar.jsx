@@ -8,10 +8,10 @@ const Navbar = () => {
                 <div className="navbar-logo">Mohd Areeb</div>
                 <div className="navbar-socials">
                     <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                        <FaGithub size={24} /><p>GitHub</p>
+                        <FaGithub size={30} /><p>GitHub</p>
                     </a>
                     <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-link">
-                        <FaTwitter size={24} /><p>Twitter</p>
+                        <FaTwitter size={30} /><p>Twitter</p>
                     </a>
                 </div>
             </div>

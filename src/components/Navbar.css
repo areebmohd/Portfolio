@@ -18,15 +18,13 @@
     font-size: 1.8rem;
     font-weight: 800;
     font-family: var(--font-heading);
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    color: transparent;
+    color: white;
     letter-spacing: -0.02em;
 }
 
 .navbar-socials {
     display: flex;
-    gap: 3rem;
+    gap: 4rem;
 }
 
 .social-link {
@@ -34,7 +32,7 @@
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .social-link:hover {
