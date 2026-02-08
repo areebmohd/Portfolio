@@ -1,0 +1,44 @@
+/* Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: rgba(3, 7, 18, 0.8);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 10px 130px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.navbar-socials {
+    display: flex;
+    gap: 3rem;
+}
+
+.social-link {
+    color: var(--color-text-secondary);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.social-link:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 5px var(--color-primary-glow));
+}
