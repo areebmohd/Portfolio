@@ -1,43 +1,5 @@
 /* Contact */
 
-/* Styles moved from index.css */
-.section {
-    padding: 6rem 0;
-    position: relative;
-}
-
-.section-title {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 4rem;
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
-    position: relative;
-    display: inline-block;
-}
-  
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background: var(--gradient-main);
-    border-radius: 2px;
-}
-  
-.glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    border: var(--glass-border);
-    box-shadow: var(--shadow-lg);
-}
-
 .contact-container {
     text-align: center;
 }
@@ -59,51 +21,6 @@
     justify-content: center;
     gap: 2rem;
     margin-bottom: 6rem;
-}
-
-.contact-item {
-    padding: 3rem 2rem;
-    border-radius: 16px;
-    min-width: 280px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    transition: transform 0.3s ease;
-}
-
-.contact-item:hover {
-    transform: translateY(-5px);
-}
-
-.contact-icon {
-    color: var(--color-primary);
-    background: rgba(0, 123, 255, 0.1);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.contact-item:hover .contact-icon {
-    background: var(--gradient-main);
-    color: white;
-    box-shadow: var(--shadow-glow);
-}
-
-.contact-item h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-.contact-item p {
-    color: var(--color-text-secondary);
-    font-size: 1.1rem;
 }
 
 .footer {

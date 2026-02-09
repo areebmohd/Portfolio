@@ -7,32 +7,38 @@ const Contact = () => {
             <div className="container contact-container">
                 <h2 className="section-title">Get In Touch</h2>
                 <p className="contact-subtitle">
-                    I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    I'm currently looking for new opportunities.<br/>Let's connect and create something amazing.
                 </p>
 
                 <div className="contact-grid">
-                    <div className="contact-item glass">
-                        <div className="contact-icon">
-                            <FaPhone size={24} />
+                    <div className="common-card">
+                        <div className="common-card-header centered">
+                            <div className="common-icon-wrapper">
+                                <FaPhone size={27} />
+                            </div>
+                            <h3 className="common-card-title">Phone</h3>
                         </div>
-                        <h3>Phone</h3>
-                        <p>+91 7534846938</p>
+                        <p className="common-card-text centered">+91 7534846938</p>
                     </div>
 
-                    <div className="contact-item glass">
-                        <div className="contact-icon">
-                            <FaEnvelope size={24} />
+                    <div className="common-card">
+                        <div className="common-card-header centered">
+                            <div className="common-icon-wrapper">
+                                <FaEnvelope size={27} />
+                            </div>
+                            <h3 className="common-card-title">Email</h3>
                         </div>
-                        <h3>Email</h3>
-                        <p>areebmohd683@gmail.com</p>
+                        <p className="common-card-text centered">areebmohd683@gmail.com</p>
                     </div>
 
-                    <div className="contact-item glass">
-                        <div className="contact-icon">
-                            <FaMapMarkerAlt size={24} />
+                    <div className="common-card">
+                        <div className="common-card-header centered">
+                            <div className="common-icon-wrapper">
+                                <FaMapMarkerAlt size={27} />
+                            </div>
+                            <h3 className="common-card-title">Location</h3>
                         </div>
-                        <h3>Location</h3>
-                        <p>Gurugram, India</p>
+                        <p className="common-card-text centered">Gurugram, India</p>
                     </div>
                 </div>
 

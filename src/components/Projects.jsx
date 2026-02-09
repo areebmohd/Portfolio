@@ -1,6 +1,10 @@
 import { useState } from "react";
 import ScreenshotModal from "./ScreenshotModal";
-import { FaExternalLinkAlt, FaImages } from "react-icons/fa";
+import {
+  FaUtensils,
+  FaStore,
+  FaBriefcase,
+} from "react-icons/fa";
 import "./Projects.css";
 
 const Projects = () => {
@@ -9,10 +13,11 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      name: "E-Commerce Platform",
+      name: "FoodDel",
+      icon: <FaUtensils size={30} />,
       summary:
-        "A full-stack e-commerce solution with real-time inventory management, secure payments, and an intuitive admin dashboard.",
-      link: "#",
+        "A full-stack food delivery web application built using the MERN stack, designed to let users browse restaurant menu, place food orders through online payments with Razorpay. Admin panel included to manage orders, users and food items on site.",
+      link: "https://food-del-frontend-irvg.onrender.com",
       screenshots: [
         "https://via.placeholder.com/800x500/1e293b/007bff?text=Dashboard",
         "https://via.placeholder.com/800x500/1e293b/007bff?text=Product+Page",
@@ -21,10 +26,11 @@ const Projects = () => {
     },
     {
       id: 2,
-      name: "Task Management App",
+      name: "BizManager",
+      icon: <FaStore size={30} />,
       summary:
-        "A productivity tool for teams to track tasks, collaborate in real-time, and analyze progress with interactive charts.",
-      link: "#",
+        "Cross-platform mobile application built with React Native and Firebase to support business management workflows. Provide inventory management, sales, performance dashboard, billing, barcode scanning and upi payments.",
+      link: "https://github.com/areebmohd/BusinessManager",
       screenshots: [
         "https://via.placeholder.com/400x700/1e293b/b700ff?text=Mobile+Home",
         "https://via.placeholder.com/400x700/1e293b/b700ff?text=Task+Detail",
@@ -33,10 +39,11 @@ const Projects = () => {
     },
     {
       id: 3,
-      name: "Social Media Dashboard",
+      name: "MyService",
+      icon: <FaBriefcase size={30} />,
       summary:
-        "An analytics dashboard aggregating data from multiple social platforms to provide actionable insights for content creators.",
-      link: "#",
+        "A full-stack service listing and booking platform built using the MERN stack. Help users to search for service providers with filters and allow service providers to showcase their service information through profiles. Use AWS storage for storing photos and videos",
+      link: "https://my-service-frontend.onrender.com",
       screenshots: [
         "https://via.placeholder.com/800x500/1e293b/34d399?text=Analytics",
         "https://via.placeholder.com/800x500/1e293b/34d399?text=Audience",
@@ -58,26 +65,27 @@ const Projects = () => {
         <h2 className="section-title">Featured Projects</h2>
         <div className="projects-grid">
           {projects.map((project) => (
-            <div key={project.id} className="project-card glass">
-              <div className="project-content">
-                <h3>{project.name}</h3>
-                <p>{project.summary}</p>
-                <div className="project-actions">
-                  <button
-                    className="btn-secondary btn-small"
-                    onClick={() => handleOpenModal(project)}
-                  >
-                    <FaImages /> Gallery
-                  </button>
-                  <a
-                    href={project.link}
-                    className="btn-primary btn-small"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Project <FaExternalLinkAlt size={14} />
-                  </a>
-                </div>
+            <div key={project.id} className="common-card project-card">
+              <div className="common-card-header">
+                <div className="common-icon-wrapper">{project.icon}</div>
+                <h3 className="common-card-title">{project.name}</h3>
+              </div>
+              <p className="common-card-text">{project.summary}</p>
+              <div className="project-actions">
+                <a
+                  href={project.link}
+                  className="btn-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Project
+                </a>
+                <button
+                  className="btn-secondary"
+                  onClick={() => handleOpenModal(project)}
+                >
+                  Gallery
+                </button>
               </div>
             </div>
           ))}

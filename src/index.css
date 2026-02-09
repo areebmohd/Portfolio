@@ -12,6 +12,7 @@
   --gradient-text: linear-gradient(to right, #007bff, #b700ff);
   --font-main: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
+  --font-tech: 'Space Mono', monospace;
   --glass-bg: rgba(17, 24, 39, 0.7);
   --glass-border: 1px solid rgba(255, 255, 255, 0.1);
   --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
@@ -68,6 +69,13 @@ button {
   font-family: inherit;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -84,4 +92,168 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-secondary);
+}
+
+/* Common Section Styles */
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.section-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--gradient-main);
+  border-radius: 2px;
+}
+
+/* Common Card Styles */
+.common-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: var(--glass-border);
+  box-shadow: var(--shadow-lg);
+  padding: 2.5rem;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.common-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-main);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.common-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+.common-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Common Header Styles */
+.common-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.common-card-header.centered {
+  flex-direction: column;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+/* Common Icon Wrapper */
+.common-icon-wrapper {
+  color: var(--color-primary);
+  background: rgba(0, 123, 255, 0.1);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.common-card:hover .common-icon-wrapper {
+  background: var(--gradient-main);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+/* Common Title */
+.common-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0;
+}
+
+/* Common Text */
+.common-card-text {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-size: 1.1rem;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.common-card-text.centered {
+  text-align: center;
+}
+
+/* Global Button Styles */
+.btn-primary,
+.btn-secondary {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--gradient-main);
+  color: white;
+  box-shadow: var(--shadow-glow);
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(0, 123, 255, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 2px solid var(--color-text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 5px var(--color-primary-glow));
 }
