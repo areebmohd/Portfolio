@@ -42,3 +42,17 @@
   color: var(--color-primary);
   filter: drop-shadow(0 0 5px var(--color-primary-glow));
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar-socials {
+    gap: 1.5rem;
+  }
+
+  .social-link p {
+    display: none;
+  }
+}

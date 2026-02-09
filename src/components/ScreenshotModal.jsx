@@ -56,6 +56,7 @@ const ScreenshotModal = ({ isOpen, onClose, images }) => {
                 alt={`Screenshot ${index + 1}`}
                 className={className}
                 onClick={() => setActiveIndex(index)}
+                loading="lazy"
               />
             );
           })}

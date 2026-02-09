@@ -8,8 +8,24 @@
 }
 
 .project-card {
+  flex: 1 1 400px;
   max-width: 48%;
   padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .projects-grid {
+    gap: 1.5rem;
+  }
+
+  .project-actions {
+    flex-wrap: wrap;
+  }
 }
 
 .project-actions {

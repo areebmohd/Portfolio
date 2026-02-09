@@ -7,7 +7,7 @@ const Contact = () => {
             <div className="container contact-container">
                 <h2 className="section-title">Get In Touch</h2>
                 <p className="contact-subtitle">
-                    I'm currently looking for new opportunities.<br/>Let's connect and create something amazing.
+                    I'm currently looking for new opportunities. If you want to grow your <i>business</i> faster or just want some help, I'd love to help. Let's connect and create something amazing.
                 </p>
 
                 <div className="contact-grid">

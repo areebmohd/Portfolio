@@ -1,5 +1,5 @@
-import { useState } from "react";
-import ScreenshotModal from "./ScreenshotModal";
+import { useState, lazy, Suspense } from "react";
+const ScreenshotModal = lazy(() => import("./ScreenshotModal"));
 import { FaUtensils, FaStore, FaBriefcase } from "react-icons/fa";
 import "./Projects.css";
 
@@ -99,11 +99,13 @@ const Projects = () => {
         </div>
       </div>
 
-      <ScreenshotModal
-        isOpen={!!selectedProject}
-        onClose={handleCloseModal}
-        images={selectedProject ? selectedProject.screenshots : []}
-      />
+      <Suspense fallback={null}>
+        <ScreenshotModal
+          isOpen={!!selectedProject}
+          onClose={handleCloseModal}
+          images={selectedProject ? selectedProject.screenshots : []}
+        />
+      </Suspense>
     </section>
   );
 };

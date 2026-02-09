@@ -14,7 +14,7 @@ const Hero = () => {
           <p className="hero-summary">
             I am a passionate developer with 2+ years of experience in building
             modern web and mobile applications. I am skilled in developing tech
-            solutions for businesses and individuals.
+            solutions for <i>businesses and individuals</i>.
           </p>
           <div className="hero-cta">
             <a href="#projects" className="btn-primary">

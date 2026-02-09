@@ -16,7 +16,7 @@ const Expertise = () => {
             </div>
             <p className="common-card-text">
               I build modern, responsive, and high-performance websites using technologies like React and Tailwind CSS.
-              My focus is on creating seamless user experiences.
+              My focus is on creating seamless user experiences for <i>businesses and individuals</i>.
             </p>
           </div>
           <div className="common-card">
@@ -28,7 +28,7 @@ const Expertise = () => {
             </div>
             <p className="common-card-text">
               I create cross-platform mobile applications for iOS and Android using React Native, ensuring a native-like experience.
-              Optimized for performance and usability.
+              Optimized for performance and usability for <i>businesses and individuals</i>.
             </p>
           </div>
         </div>
