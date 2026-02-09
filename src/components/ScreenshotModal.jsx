@@ -1,46 +1,84 @@
-import { useRef } from 'react';
-import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import './ScreenshotModal.css';
+import { useState, useEffect, useCallback } from "react";
+import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import "./ScreenshotModal.css";
 
 const ScreenshotModal = ({ isOpen, onClose, images }) => {
-  const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleNext = useCallback(() => {
+    if (images?.length) {
+      setActiveIndex((prev) => (prev + 1) % images.length);
+    }
+  }, [images]);
+
+  const handlePrev = useCallback(() => {
+    if (images?.length) {
+      setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+  }, [images]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowRight") {
+        handleNext();
+      } else if (e.key === "ArrowLeft") {
+        handlePrev();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, handleNext, handlePrev]);
 
   if (!isOpen) return null;
-
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      const scrollAmount = 600; // Adjust as needed
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth',
-      });
-    }
-  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close-btn" onClick={onClose} aria-label="Close">
+        <div className="modal-screenshots-container">
+          {images.map((img, index) => {
+            let className = "modal-screenshot-img";
+            if (index === activeIndex) className += " active";
+            else if (
+              index ===
+              (activeIndex - 1 + images.length) % images.length
+            )
+              className += " prev";
+            else if (index === (activeIndex + 1) % images.length)
+              className += " next";
+
+            return (
+              <img
+                key={index}
+                src={img}
+                alt={`Screenshot ${index + 1}`}
+                className={className}
+                onClick={() => setActiveIndex(index)}
+              />
+            );
+          })}
+        </div>
+
+        <button
+          className="modal-control-btn icon-only nav-btn prev"
+          onClick={handlePrev}
+        >
+          <FaChevronLeft size={24} />
+        </button>
+        <button
+          className="modal-control-btn icon-only close-btn"
+          onClick={onClose}
+        >
           <FaTimes size={24} />
         </button>
-
-        <div className="modal-screenshots-container" ref={scrollRef}>
-          {images.map((img, index) => (
-            <img key={index} src={img} alt={`Screenshot ${index + 1}`} className="modal-screenshot-img" />
-          ))}
-        </div>
-
-        <div className="modal-controls">
-          <button className="modal-control-btn" onClick={() => scroll('left')}>
-            <FaChevronLeft size={20} /> Move Left
-          </button>
-          <button className="modal-control-btn" onClick={onClose}>
-            Close
-          </button>
-          <button className="modal-control-btn" onClick={() => scroll('right')}>
-            Move Right <FaChevronRight size={20} />
-          </button>
-        </div>
+        <button
+          className="modal-control-btn icon-only nav-btn next"
+          onClick={handleNext}
+        >
+          <FaChevronRight size={24} />
+        </button>
       </div>
     </div>
   );

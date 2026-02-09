@@ -1,11 +1,29 @@
 import { useState } from "react";
 import ScreenshotModal from "./ScreenshotModal";
-import {
-  FaUtensils,
-  FaStore,
-  FaBriefcase,
-} from "react-icons/fa";
+import { FaUtensils, FaStore, FaBriefcase } from "react-icons/fa";
 import "./Projects.css";
+
+// Import all screenshots dynamically
+const foodDelModules = import.meta.glob("../assets/fooddel/*.jpg", {
+  eager: true,
+});
+const foodDelScreenshots = Object.values(foodDelModules).map(
+  (mod) => mod.default,
+);
+
+const bizManagerModules = import.meta.glob("../assets/bizmanager/*.jpg", {
+  eager: true,
+});
+const bizManagerScreenshots = Object.values(bizManagerModules).map(
+  (mod) => mod.default,
+);
+
+const myServiceModules = import.meta.glob("../assets/myservice/*.jpg", {
+  eager: true,
+});
+const myServiceScreenshots = Object.values(myServiceModules).map(
+  (mod) => mod.default,
+);
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -18,11 +36,7 @@ const Projects = () => {
       summary:
         "A full-stack food delivery web application built using the MERN stack, designed to let users browse restaurant menu, place food orders through online payments with Razorpay. Admin panel included to manage orders, users and food items on site.",
       link: "https://food-del-frontend-irvg.onrender.com",
-      screenshots: [
-        "https://via.placeholder.com/800x500/1e293b/007bff?text=Dashboard",
-        "https://via.placeholder.com/800x500/1e293b/007bff?text=Product+Page",
-        "https://via.placeholder.com/800x500/1e293b/007bff?text=Cart",
-      ],
+      screenshots: foodDelScreenshots,
     },
     {
       id: 2,
@@ -31,11 +45,7 @@ const Projects = () => {
       summary:
         "Cross-platform mobile application built with React Native and Firebase to support business management workflows. Provide inventory management, sales, performance dashboard, billing, barcode scanning and upi payments.",
       link: "https://github.com/areebmohd/BusinessManager",
-      screenshots: [
-        "https://via.placeholder.com/400x700/1e293b/b700ff?text=Mobile+Home",
-        "https://via.placeholder.com/400x700/1e293b/b700ff?text=Task+Detail",
-        "https://via.placeholder.com/400x700/1e293b/b700ff?text=Settings",
-      ],
+      screenshots: bizManagerScreenshots,
     },
     {
       id: 3,
@@ -44,10 +54,7 @@ const Projects = () => {
       summary:
         "A full-stack service listing and booking platform built using the MERN stack. Help users to search for service providers with filters and allow service providers to showcase their service information through profiles. Use AWS storage for storing photos and videos",
       link: "https://my-service-frontend.onrender.com",
-      screenshots: [
-        "https://via.placeholder.com/800x500/1e293b/34d399?text=Analytics",
-        "https://via.placeholder.com/800x500/1e293b/34d399?text=Audience",
-      ],
+      screenshots: myServiceScreenshots,
     },
   ];
 

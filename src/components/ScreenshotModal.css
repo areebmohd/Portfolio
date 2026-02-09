@@ -1,100 +1,169 @@
 /* Modal */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-    padding: 1rem;
-    backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
 }
 
 .modal-content {
-    background: var(--color-bg-secondary);
-    padding: 2rem;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 1000px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.modal-close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: transparent;
-    color: var(--color-text-secondary);
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: background 0.3s, color 0.3s;
-}
-
-.modal-close-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--color-text);
-}
-
+/* Container for images with perspective for potential 3D effects */
 .modal-screenshots-container {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 1rem;
-    scrollbar-width: thin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  perspective: 1000px;
+  margin-bottom: 2rem;
 }
 
 .modal-screenshot-img {
-    height: 500px;
-    width: auto;
-    border-radius: 8px;
-    scroll-snap-align: center;
-    object-fit: contain;
-    background: #000;
+  height: 100vh;
+  width: auto;
+  max-width: 100vw;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.8) translateX(0);
+  z-index: 1;
+  filter: blur(2px) grayscale(50%);
+  cursor: pointer;
+  /* Cut top 30px for notch */
+  clip-path: inset(35px 0 0 0 round 12px);
 }
 
-.modal-controls {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+/* Active Image: Center, large, fully visible */
+.modal-screenshot-img.active {
+  opacity: 1;
+  transform: scale(1) translateX(0);
+  z-index: 10;
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.8));
 }
 
-.modal-control-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    background: var(--color-bg);
-    color: var(--color-text);
-    font-weight: 500;
-    font-family: var(--font-heading);
-    transition: background 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+/* Previous Image: Left, smaller, dimmed */
+.modal-screenshot-img.prev {
+  opacity: 0.4;
+  transform: scale(0.85) translateX(-60%);
+  z-index: 5;
+  pointer-events: none; /* Prevent clicking background images to close modal if wrapper has onClick */
 }
 
-.modal-control-btn:hover {
-    background: var(--color-primary);
-    color: white;
-    border-color: var(--color-primary);
+/* Next Image: Right, smaller, dimmed */
+.modal-screenshot-img.next {
+  opacity: 0.4;
+  transform: scale(0.85) translateX(60%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Base Control Button Styles */
+.modal-control-btn.icon-only {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-control-btn.icon-only:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Close Button - Top Left */
+.modal-control-btn.close-btn {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.modal-control-btn.close-btn:hover {
+  background: #ff3b30;
+  border-color: #ff3b30;
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* Navigation Buttons - Side Centered */
+.modal-control-btn.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.modal-control-btn.nav-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.modal-control-btn.prev {
+  left: 2rem;
+}
+
+.modal-control-btn.next {
+  right: 2rem;
 }
 
 @media (max-width: 768px) {
-    .modal-screenshot-img {
-        height: 300px;
-    }
+  .modal-screenshot-img {
+    height: 70vh;
+  }
 
-    .modal-controls {
-        flex-direction: column;
-        gap: 1rem;
-    }
+  .modal-screenshot-img.prev {
+    transform: scale(0.8) translateX(-50%);
+    opacity: 0.3;
+  }
+
+  .modal-screenshot-img.next {
+    transform: scale(0.8) translateX(50%);
+    opacity: 0.3;
+  }
+
+  .modal-control-btn.icon-only {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .modal-control-btn.close-btn {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .modal-control-btn.prev {
+    left: 1rem;
+  }
+
+  .modal-control-btn.next {
+    right: 1rem;
+  }
 }
