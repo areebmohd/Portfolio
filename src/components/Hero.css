@@ -1,131 +1,273 @@
 .hero {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    padding-top: 80px;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
 }
 
 .section {
-    padding: 6rem 0;
-    position: relative;
+  padding: 6rem 0;
+  position: relative;
 }
 
 .gradient-text {
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8rem;
 }
 
 .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-.hero-image::after {
-    content: '';
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    background: var(--gradient-main);
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.3;
-    z-index: -1;
-    animation: pulse 4s ease-in-out infinite;
+/* Galaxy Effect */
+.galaxy-container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.45; transform: scale(1.05); }
+.galaxy-core {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #fff, var(--color-primary), transparent);
+  border-radius: 50%;
+  position: absolute;
+  box-shadow:
+    0 0 60px 20px var(--color-primary-glow),
+    0 0 100px 40px var(--color-accent-glow);
+  animation: galaxy-pulse 3s ease-in-out infinite;
+  z-index: 10;
+}
+
+.galaxy-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
+  transform-style: preserve-3d;
+}
+
+.ring-1 {
+  width: 300px;
+  height: 300px;
+  border-top: 2px solid var(--color-primary);
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid var(--color-accent);
+  border-left: 2px solid transparent;
+  animation: galaxy-spin 10s linear infinite;
+  box-shadow: 0 0 30px var(--color-primary-glow);
+}
+
+.ring-2 {
+  width: 240px;
+  height: 240px;
+  border-top: 2px solid transparent;
+  border-right: 2px solid var(--color-accent);
+  border-bottom: 2px solid transparent;
+  border-left: 2px solid var(--color-primary);
+  animation: galaxy-spin-reverse 15s linear infinite;
+  box-shadow: 0 0 30px var(--color-accent-glow);
+}
+
+.ring-3 {
+  width: 360px;
+  height: 360px;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  animation: galaxy-spin 25s linear infinite;
+}
+
+.galaxy-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(1px 1px at 10% 10%, white 100%, transparent),
+    radial-gradient(1px 1px at 20% 20%, white 100%, transparent),
+    radial-gradient(1px 1px at 30% 30%, white 100%, transparent),
+    radial-gradient(1px 1px at 40% 40%, white 100%, transparent),
+    radial-gradient(1px 1px at 50% 50%, white 100%, transparent),
+    radial-gradient(1px 1px at 60% 60%, white 100%, transparent),
+    radial-gradient(1px 1px at 70% 70%, white 100%, transparent),
+    radial-gradient(1px 1px at 80% 80%, white 100%, transparent),
+    radial-gradient(1px 1px at 90% 90%, white 100%, transparent),
+    radial-gradient(1px 1px at 15% 85%, white 100%, transparent),
+    radial-gradient(1px 1px at 85% 15%, white 100%, transparent),
+    radial-gradient(1px 1px at 25% 75%, white 100%, transparent),
+    radial-gradient(1px 1px at 75% 25%, white 100%, transparent),
+    radial-gradient(2px 2px at 10% 50%, white 100%, transparent),
+    radial-gradient(2px 2px at 50% 10%, white 100%, transparent),
+    radial-gradient(2px 2px at 90% 50%, white 100%, transparent),
+    radial-gradient(2px 2px at 50% 90%, white 100%, transparent),
+    radial-gradient(1px 1px at 5% 95%, white 100%, transparent),
+    radial-gradient(1px 1px at 95% 5%, white 100%, transparent),
+    radial-gradient(1px 1px at 35% 65%, white 100%, transparent),
+    radial-gradient(1px 1px at 65% 35%, white 100%, transparent),
+    radial-gradient(1px 1px at 45% 55%, white 100%, transparent),
+    radial-gradient(1px 1px at 55% 45%, white 100%, transparent),
+    radial-gradient(1px 1px at 22% 88%, white 100%, transparent),
+    radial-gradient(1px 1px at 88% 22%, white 100%, transparent),
+    radial-gradient(1px 1px at 12% 62%, white 100%, transparent),
+    radial-gradient(1px 1px at 62% 12%, white 100%, transparent),
+    radial-gradient(1px 1px at 72% 38%, white 100%, transparent),
+    radial-gradient(1px 1px at 38% 72%, white 100%, transparent);
+  background-size: 200% 200%;
+  opacity: 0.8;
+  animation: star-twinkle 4s infinite alternate;
+  z-index: 0;
+}
+
+@keyframes galaxy-spin {
+  0% {
+    transform: rotate(0deg) rotateX(60deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotate(360deg) rotateX(60deg) rotateY(0deg);
+  }
+}
+
+@keyframes galaxy-spin-reverse {
+  0% {
+    transform: rotate(360deg) rotateX(-60deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotate(0deg) rotateX(-60deg) rotateY(0deg);
+  }
+}
+
+@keyframes galaxy-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes star-twinkle {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.4;
+  }
 }
 
 @media (max-width: 968px) {
-    .hero {
-        min-height: auto;
-        padding-top: 60px;
-    }
+  .galaxy-container {
+    width: 300px;
+    height: 300px;
+  }
+  .ring-1 {
+    width: 220px;
+    height: 220px;
+  }
+  .ring-2 {
+    width: 180px;
+    height: 180px;
+  }
+  .ring-3 {
+    width: 260px;
+    height: 260px;
+  }
+  .galaxy-core {
+    width: 80px;
+    height: 80px;
+  }
+}
 
-    .hero-container {
-        flex-direction: column-reverse;
-        padding-top: 2rem;
-        gap: 3rem;
-        text-align: center;
-    }
+@media (max-width: 968px) {
+  .hero {
+    min-height: auto;
+    padding-top: 60px;
+  }
 
-    .hero-content {
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .hero-container {
+    flex-direction: column-reverse;
+    padding-top: 2rem;
+    gap: 3rem;
+    text-align: center;
+  }
 
-    .hero-cta {
-        justify-content: center;
-    }
+  .hero-content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .hero-image::after {
-        width: 250px;
-        height: 250px;
-        filter: blur(60px);
-    }
+  .hero-cta {
+    justify-content: center;
+  }
 
-    .hero-image img {
-        max-width: 280px;
-    }
+  .hero-cta {
+    justify-content: center;
+  }
 }
 
 .hero-content {
-    max-width: 800px;
-    text-align: left;
+  max-width: 800px;
+  text-align: left;
 }
 
 .hero-greeting {
-    color: var(--color-text-secondary);
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+  color: var(--color-text-secondary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .hero-name {
-    font-size: clamp(3rem, 8vw, 6rem);
-    margin-bottom: 0.5rem;
-    font-weight: 800;
-    color: var(--color-text);
-    line-height: 1;
+  font-size: clamp(3rem, 8vw, 6rem);
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1;
 }
 
 .hero-role {
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    color: var(--color-text-secondary);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  color: var(--color-text-secondary);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
 }
 
 .hero-summary {
-    max-width: 600px;
-    color: var(--color-text-secondary);
-    font-size: 1.2rem;
-    margin-bottom: 2.5rem;
-    line-height: 1.8;
+  max-width: 600px;
+  color: var(--color-text-secondary);
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
 }
 
 .hero-cta {
-    display: flex;
-    gap: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
 }
-

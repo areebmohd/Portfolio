@@ -9,10 +9,11 @@
   --color-accent: #b700ff;
   --color-accent-glow: rgba(183, 0, 255, 0.5);
   --gradient-main: linear-gradient(135deg, #007bff 0%, #b700ff 100%);
+  --gradient-reverse: linear-gradient(135deg, #b700ff 25%, #007bff 100%);
   --gradient-text: linear-gradient(to right, #007bff, #b700ff);
-  --font-main: 'Inter', sans-serif;
-  --font-heading: 'Outfit', sans-serif;
-  --font-tech: 'Space Mono', monospace;
+  --font-main: "Inter", sans-serif;
+  --font-heading: "Outfit", sans-serif;
+  --font-tech: "Space Mono", monospace;
   --glass-bg: rgba(17, 24, 39, 0.7);
   --glass-border: 1px solid rgba(255, 255, 255, 0.1);
   --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
@@ -35,8 +36,16 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   background-image:
-    radial-gradient(circle at 15% 50%, rgba(0, 123, 255, 0.08) 0%, transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(183, 0, 255, 0.08) 0%, transparent 25%);
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(0, 123, 255, 0.08) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(183, 0, 255, 0.08) 0%,
+      transparent 25%
+    );
   background-attachment: fixed;
 }
 
@@ -102,6 +111,7 @@ button {
 
 .section-title {
   font-size: 3rem;
+  font-family: var(--font-tech);
   text-align: center;
   margin-bottom: 4rem;
   background: var(--gradient-text);
@@ -114,7 +124,7 @@ button {
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -142,7 +152,7 @@ button {
 }
 
 .common-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -187,7 +197,9 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
   flex-shrink: 0;
 }
 
@@ -220,7 +232,8 @@ button {
 
 /* Global Button Styles */
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-tertiary {
   padding: 1rem 2rem;
   border-radius: 50px;
   font-weight: 600;
@@ -256,4 +269,16 @@ button {
   border-color: var(--color-primary);
   color: var(--color-primary);
   filter: drop-shadow(0 0 5px var(--color-primary-glow));
+}
+
+.btn-tertiary {
+  background: var(--gradient-reverse);
+  color: white;
+  box-shadow: var(--color-accent-glow);
+  border: none;
+}
+
+.btn-tertiary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(183, 0, 255, 0.4);
 }

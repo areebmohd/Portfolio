@@ -110,9 +110,10 @@
 }
 
 .modal-control-btn.close-btn:hover {
-  background: #ff3b30;
-  border-color: #ff3b30;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px var(--color-accent-glow);
 }
 
 /* Navigation Buttons - Side Centered */
@@ -124,14 +125,25 @@
 
 .modal-control-btn.nav-btn:hover {
   transform: translateY(-50%) scale(1.1);
+  border-color: transparent;
 }
 
 .modal-control-btn.prev {
   left: 2rem;
 }
 
+.modal-control-btn.prev:hover {
+  background: var(--gradient-reverse);
+  box-shadow: 0 0 20px var(--color-accent-glow);
+}
+
 .modal-control-btn.next {
   right: 2rem;
+}
+
+.modal-control-btn.next:hover {
+  background: var(--gradient-main);
+  box-shadow: 0 0 20px var(--color-primary-glow);
 }
 
 @media (max-width: 768px) {
