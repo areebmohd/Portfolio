@@ -4,11 +4,11 @@ import './Skills.css';
 const Skills = () => {
   const customSkills = [
     { category: "Frontend", icon: FaCode, items: ["React", "Tailwind CSS", "HTML5", "CSS3"] },
-    { category: "Backend", icon: FaServer, items: ["Node.js", "Express.js", "Firebase", "REST APIs"] },
+    { category: "Backend", icon: FaServer, items: ["Node.js", "Express.js", "Firebase", "Supabase"] },
     { category: "Mobile", icon: FaMobileAlt, items: ["React Native", "Expo", "Android Studio"] },
     { category: "Languages", icon: FaLayerGroup, items: ["Python", "JavaScript", "TypeScript"] },
     { category: "Databases", icon: FaDatabase, items: ["MySQL", "Firestore", "MongoDB"] },
-    { category: "Tools", icon: FaTools, items: ["GitHub", "VS Code", "AI Tools", "AWS Basics"] },
+    { category: "Tools", icon: FaTools, items: ["GitHub", "VS Code", "AWS Basics"] },
   ];
 
   return (

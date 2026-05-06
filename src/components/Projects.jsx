@@ -1,6 +1,6 @@
 import { useState, lazy, Suspense } from "react";
 const ScreenshotModal = lazy(() => import("./ScreenshotModal"));
-import { FaUtensils, FaStore, FaBriefcase } from "react-icons/fa";
+import { FaUtensils, FaStore, FaBriefcase, FaTruckMoving } from "react-icons/fa";
 import "./Projects.css";
 
 // Import all screenshots dynamically
@@ -24,6 +24,11 @@ const myServiceModules = import.meta.glob("../assets/myservice/*.jpg", {
 const myServiceScreenshots = Object.values(myServiceModules).map(
   (mod) => mod.default,
 );
+
+const zoroModules = import.meta.glob("../assets/Zoro/*.png", {
+  eager: true,
+});
+const zoroScreenshots = Object.values(zoroModules).map((mod) => mod.default);
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -52,9 +57,18 @@ const Projects = () => {
       name: "MyService",
       icon: <FaBriefcase size={30} />,
       summary:
-        "A full-stack service listing and booking platform built using the MERN stack. Help users to search for service providers with filters and allow service providers to showcase their service information through profiles. Use AWS storage for storing photos and videos",
+        "A full-stack service listing and booking platform built using the MERN stack. Help users to search for service providers with filters and allow service providers to showcase their service information through profiles. Use AWS storage for storing photos and videos.",
       link: "https://my-service-frontend.onrender.com",
       screenshots: myServiceScreenshots,
+    },
+    {
+      id: 4,
+      name: "Zoro Delivery App",
+      icon: <FaTruckMoving size={30} />,
+      summary:
+        "A new delivery ecosystem for local shops and customers featuring a main app, a dedicated rider app, and a powerful admin web app. Built with React Native & React to provide digital shop creation, order placement, deliveries, analytics, payments and notifications.",
+      link: "https://github.com/areebmohd/DeliveryPlatformMainApp",
+      screenshots: zoroScreenshots,
     },
   ];
 
