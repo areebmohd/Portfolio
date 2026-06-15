@@ -1,35 +1,50 @@
-/* Projects */
-
+/* Projects section styling */
 .projects-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2.5rem;
+  margin-top: 2rem;
 }
 
 .project-card {
-  flex: 1 1 400px;
-  max-width: 48%;
-  padding: 2rem;
+  padding: 2.8rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-@media (max-width: 768px) {
-  .project-card {
-    max-width: 100%;
-    padding: 1.5rem;
-  }
-
-  .projects-grid {
-    gap: 1.5rem;
-  }
-
-  .project-actions {
-    flex-wrap: wrap;
-  }
+.project-card .common-card-text {
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
 }
 
 .project-actions {
   display: flex;
   gap: 1rem;
-  margin-top: 1.5rem;
+  align-items: center;
+  z-index: 2;
+  margin-top: auto;
+}
+
+.project-actions .btn-primary,
+.project-actions .btn-secondary {
+  flex: 1;
+  padding: 0.8rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .project-actions {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
 }

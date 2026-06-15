@@ -23,7 +23,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="social-link"
           >
-            <FaGithub size={35} />
+            <FaGithub size={20} />
             <p>GitHub</p>
           </a>
           <a
@@ -32,7 +32,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             className="social-link"
           >
-            <FaXTwitter size={35} />
+            <FaXTwitter size={20} />
             <p>Twitter</p>
           </a>
         </div>

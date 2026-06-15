@@ -1,7 +1,7 @@
-/* Contact */
-
+/* Contact styling */
 .contact-container {
   text-align: center;
+  width: 100%;
 }
 
 .contact-subtitle {
@@ -10,24 +10,53 @@
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.8;
   text-align: center;
   padding: 0 1rem;
 }
 
+.contact-subtitle i {
+  color: var(--color-primary);
+  font-style: normal;
+  font-weight: 500;
+}
+
 .contact-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto 6rem auto;
+}
+
+.contact-grid .common-card {
+  padding: 2.5rem 2rem;
+  align-items: center;
+}
+
+.contact-grid .common-card-text {
+  font-family: var(--font-tech);
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin-top: 0.5rem;
 }
 
 .footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 3rem;
+  border-top: 1px solid rgba(0, 123, 255, 0.08);
+  padding: 3rem 0;
   color: var(--color-text-secondary);
   font-size: 0.95rem;
   text-align: center;
+  font-family: var(--font-tech);
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
 }

@@ -2,19 +2,9 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
-  padding-top: 80px;
-}
-
-.section {
-  padding: 6rem 0;
+  justify-content: center;
   position: relative;
-}
-
-.gradient-text {
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  padding-top: 40px;
 }
 
 .hero-container {
@@ -22,9 +12,72 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8rem;
+  gap: 5rem;
 }
 
+.hero-content {
+  flex: 1.2;
+  max-width: 650px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-greeting {
+  color: var(--color-primary);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: var(--font-tech);
+}
+
+.hero-name {
+  font-size: clamp(3.2rem, 6vw, 5rem);
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.hero-role {
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  color: var(--color-text-secondary);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-summary {
+  color: var(--color-text-secondary);
+  font-size: 1.15rem;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+.hero-summary i {
+  color: var(--color-primary);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Galaxy Illustration */
 .hero-image {
   flex: 1;
   display: flex;
@@ -34,249 +87,210 @@
   z-index: 1;
 }
 
-/* Galaxy Effect */
 .galaxy-container {
-  width: 400px;
-  height: 400px;
+  width: 420px;
+  height: 420px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  perspective: 1200px;
 }
 
 .galaxy-core {
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, #fff, var(--color-primary), transparent);
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, #ffffff 10%, var(--color-primary) 50%, rgba(0, 102, 255, 0.4) 100%);
   border-radius: 50%;
   position: absolute;
   box-shadow:
-    0 0 60px 20px var(--color-primary-glow),
-    0 0 100px 40px var(--color-accent-glow);
-  animation: galaxy-pulse 3s ease-in-out infinite;
+    0 0 35px 8px rgba(0, 123, 255, 0.6),
+    0 0 70px 20px rgba(0, 102, 255, 0.35);
+  animation: galaxy-pulse 4s ease-in-out infinite;
   z-index: 10;
 }
 
 .galaxy-ring {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
+  border: 1px solid rgba(0, 210, 255, 0.06);
   transform-style: preserve-3d;
 }
 
 .ring-1 {
-  width: 300px;
-  height: 300px;
-  border-top: 2px solid var(--color-primary);
-  border-right: 2px solid transparent;
-  border-bottom: 2px solid var(--color-accent);
-  border-left: 2px solid transparent;
-  animation: galaxy-spin 10s linear infinite;
-  box-shadow: 0 0 30px var(--color-primary-glow);
+  width: 320px;
+  height: 320px;
+  border-top: 1.5px solid rgba(0, 123, 255, 0.45);
+  transform: rotateX(65deg) rotateY(15deg);
+  animation: orbit-1 12s linear infinite;
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.05);
+}
+
+.ring-1::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--color-primary);
 }
 
 .ring-2 {
-  width: 240px;
-  height: 240px;
-  border-top: 2px solid transparent;
-  border-right: 2px solid var(--color-accent);
-  border-bottom: 2px solid transparent;
-  border-left: 2px solid var(--color-primary);
-  animation: galaxy-spin-reverse 15s linear infinite;
-  box-shadow: 0 0 30px var(--color-accent-glow);
+  width: 250px;
+  height: 250px;
+  border-right: 1.5px solid rgba(0, 102, 255, 0.5);
+  transform: rotateX(55deg) rotateY(-25deg);
+  animation: orbit-2 8s linear infinite;
+}
+
+.ring-2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffffff;
 }
 
 .ring-3 {
-  width: 360px;
-  height: 360px;
-  border: 1px dashed rgba(255, 255, 255, 0.2);
-  animation: galaxy-spin 25s linear infinite;
+  width: 390px;
+  height: 390px;
+  border-bottom: 1.5px solid rgba(0, 123, 255, 0.3);
+  transform: rotateX(70deg) rotateY(45deg);
+  animation: orbit-3 20s linear infinite;
 }
 
+.ring-3::after {
+  content: "";
+  position: absolute;
+  bottom: 15%;
+  right: 15%;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--color-primary);
+}
+
+/* Subtle background stars within container */
 .galaxy-stars {
   position: absolute;
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(1px 1px at 10% 10%, white 100%, transparent),
-    radial-gradient(1px 1px at 20% 20%, white 100%, transparent),
-    radial-gradient(1px 1px at 30% 30%, white 100%, transparent),
-    radial-gradient(1px 1px at 40% 40%, white 100%, transparent),
-    radial-gradient(1px 1px at 50% 50%, white 100%, transparent),
-    radial-gradient(1px 1px at 60% 60%, white 100%, transparent),
-    radial-gradient(1px 1px at 70% 70%, white 100%, transparent),
-    radial-gradient(1px 1px at 80% 80%, white 100%, transparent),
-    radial-gradient(1px 1px at 90% 90%, white 100%, transparent),
-    radial-gradient(1px 1px at 15% 85%, white 100%, transparent),
-    radial-gradient(1px 1px at 85% 15%, white 100%, transparent),
-    radial-gradient(1px 1px at 25% 75%, white 100%, transparent),
+    radial-gradient(1px 1px at 15% 15%, white 100%, transparent),
+    radial-gradient(1px 1px at 30% 70%, white 100%, transparent),
     radial-gradient(1px 1px at 75% 25%, white 100%, transparent),
-    radial-gradient(2px 2px at 10% 50%, white 100%, transparent),
-    radial-gradient(2px 2px at 50% 10%, white 100%, transparent),
-    radial-gradient(2px 2px at 90% 50%, white 100%, transparent),
-    radial-gradient(2px 2px at 50% 90%, white 100%, transparent),
-    radial-gradient(1px 1px at 5% 95%, white 100%, transparent),
-    radial-gradient(1px 1px at 95% 5%, white 100%, transparent),
-    radial-gradient(1px 1px at 35% 65%, white 100%, transparent),
-    radial-gradient(1px 1px at 65% 35%, white 100%, transparent),
-    radial-gradient(1px 1px at 45% 55%, white 100%, transparent),
-    radial-gradient(1px 1px at 55% 45%, white 100%, transparent),
-    radial-gradient(1px 1px at 22% 88%, white 100%, transparent),
-    radial-gradient(1px 1px at 88% 22%, white 100%, transparent),
-    radial-gradient(1px 1px at 12% 62%, white 100%, transparent),
-    radial-gradient(1px 1px at 62% 12%, white 100%, transparent),
-    radial-gradient(1px 1px at 72% 38%, white 100%, transparent),
-    radial-gradient(1px 1px at 38% 72%, white 100%, transparent);
-  background-size: 200% 200%;
-  opacity: 0.8;
-  animation: star-twinkle 4s infinite alternate;
+    radial-gradient(1px 1px at 85% 85%, white 100%, transparent),
+    radial-gradient(2px 2px at 50% 15%, white 100%, transparent),
+    radial-gradient(2px 2px at 15% 50%, white 100%, transparent),
+    radial-gradient(1.5px 1.5px at 80% 45%, white 100%, transparent);
+  opacity: 0.6;
+  animation: star-twinkle 6s infinite alternate ease-in-out;
   z-index: 0;
 }
 
-@keyframes galaxy-spin {
-  0% {
-    transform: rotate(0deg) rotateX(60deg) rotateY(0deg);
-  }
-  100% {
-    transform: rotate(360deg) rotateX(60deg) rotateY(0deg);
-  }
+@keyframes orbit-1 {
+  0% { transform: rotateX(65deg) rotateY(15deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateY(15deg) rotateZ(360deg); }
 }
 
-@keyframes galaxy-spin-reverse {
-  0% {
-    transform: rotate(360deg) rotateX(-60deg) rotateY(0deg);
-  }
-  100% {
-    transform: rotate(0deg) rotateX(-60deg) rotateY(0deg);
-  }
+@keyframes orbit-2 {
+  0% { transform: rotateX(55deg) rotateY(-25deg) rotateZ(360deg); }
+  100% { transform: rotateX(55deg) rotateY(-25deg) rotateZ(0deg); }
+}
+
+@keyframes orbit-3 {
+  0% { transform: rotateX(70deg) rotateY(45deg) rotateZ(0deg); }
+  100% { transform: rotateX(70deg) rotateY(45deg) rotateZ(360deg); }
 }
 
 @keyframes galaxy-pulse {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
-    opacity: 0.8;
+    box-shadow:
+      0 0 35px 8px rgba(0, 123, 255, 0.6),
+      0 0 70px 20px rgba(0, 102, 255, 0.35);
   }
   50% {
-    transform: scale(1.1);
-    opacity: 1;
+    transform: scale(1.06);
+    box-shadow:
+      0 0 45px 12px rgba(0, 123, 255, 0.75),
+      0 0 90px 30px rgba(0, 102, 255, 0.45);
   }
 }
 
 @keyframes star-twinkle {
-  0% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0.4;
-  }
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
 }
 
 @media (max-width: 968px) {
   .hero {
     min-height: auto;
-    padding-top: 40px;
+    padding-top: 4rem;
     padding-bottom: 4rem;
   }
 
   .hero-container {
     flex-direction: column-reverse;
-    gap: 3rem;
+    gap: 4rem;
     text-align: center;
-    padding: 0 1.5rem;
+    padding: 0;
   }
 
   .hero-content {
     align-items: center;
     width: 100%;
+    text-align: center;
   }
 
   .hero-name {
-    font-size: clamp(2.5rem, 10vw, 4rem);
+    font-size: clamp(2.8rem, 8vw, 4rem);
   }
 
   .hero-role {
-    font-size: clamp(1.2rem, 5vw, 2rem);
+    font-size: clamp(1.4rem, 4vw, 2rem);
   }
 
   .hero-summary {
-    font-size: 1rem;
+    font-size: 1.05rem;
     margin-bottom: 2rem;
   }
 
   .hero-cta {
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    width: 100%;
   }
 
   .galaxy-container {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
+  }
+
+  .galaxy-core {
+    width: 64px;
+    height: 64px;
   }
 
   .ring-1 {
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 230px;
   }
+
   .ring-2 {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
   }
+
   .ring-3 {
-    width: 240px;
-    height: 240px;
+    width: 280px;
+    height: 280px;
   }
-  .galaxy-core {
-    width: 70px;
-    height: 70px;
-  }
-}
-
-.hero-content {
-  max-width: 800px;
-  text-align: left;
-}
-
-.hero-greeting {
-  color: var(--color-text-secondary);
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.hero-name {
-  font-size: clamp(3rem, 8vw, 6rem);
-  margin-bottom: 0.5rem;
-  font-weight: 800;
-  color: var(--color-text);
-  line-height: 1;
-}
-
-.hero-role {
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  color: var(--color-text-secondary);
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-}
-
-.hero-summary {
-  max-width: 600px;
-  color: var(--color-text-secondary);
-  font-size: 1.2rem;
-  margin-bottom: 2.5rem;
-  line-height: 1.8;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 1.5rem;
 }
