@@ -1,11 +1,16 @@
 import "./Hero.css";
 import resume from "../assets/MohdAreebResume.pdf";
+import { FaFileAlt, FaEnvelope } from "react-icons/fa";
 
 const Hero = () => {
   return (
-    <section className="section hero">
+    <section className="section hero" id="home">
       <div className="container hero-container">
         <div className="hero-content">
+          <div className="hero-badge">
+            <span className="pulse-dot"></span>
+            Available for Freelance & Full-time
+          </div>
           <p className="hero-greeting">Hi, I am</p>
           <h1 className="hero-name">Mohd Areeb</h1>
           <h2 className="hero-role">
@@ -13,9 +18,10 @@ const Hero = () => {
           </h2>
           <p className="hero-summary">
             I am a passionate developer with 2+ years of experience in building
-            modern web and mobile applications. I am skilled in developing tech
-            solutions for <i>businesses and individuals</i>.
+            high-performance web and mobile applications. I specialize in turning
+            ideas into sleek, robust, and user-centric digital products.
           </p>
+
           <div className="hero-cta">
             <a href="#projects" className="btn-primary">
               View Work
@@ -24,15 +30,31 @@ const Hero = () => {
               href={resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-tertiary"
+              className="btn-secondary"
             >
-              View Resume
+              <FaFileAlt size={14} /> Resume
             </a>
-            <a href="#contact" className="btn-secondary">
-              Contact Me
+            <a href="#contact" className="btn-tertiary">
+              <FaEnvelope size={14} /> Contact Me
             </a>
           </div>
+
+          <div className="hero-stats">
+            <div className="stat-item">
+              <span className="stat-number">2+</span>
+              <span className="stat-label">Years Experience</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">5+</span>
+              <span className="stat-label">Production Apps</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">Client Satisfaction</span>
+            </div>
+          </div>
         </div>
+
         <div className="hero-image">
           <div className="galaxy-container">
             <div className="galaxy-stars"></div>

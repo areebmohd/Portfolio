@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { FaTimes, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "./ScreenshotModal.css";
 
-const ScreenshotModal = ({ isOpen, onClose, images }) => {
+const ScreenshotModal = ({ isOpen, onClose, images, noCrop }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleNext = useCallback(() => {
@@ -40,6 +40,7 @@ const ScreenshotModal = ({ isOpen, onClose, images }) => {
         <div className="modal-screenshots-container">
           {images.map((img, index) => {
             let className = "modal-screenshot-img";
+            if (noCrop) className += " no-crop";
             if (index === activeIndex) className += " active";
             else if (
               index ===

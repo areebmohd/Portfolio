@@ -53,6 +53,10 @@
   border: 1px solid rgba(0, 123, 255, 0.05);
 }
 
+.modal-screenshot-img.no-crop {
+  clip-path: none;
+}
+
 /* Active Image: Center, large, fully visible with a premium cyan halo */
 .modal-screenshot-img.active {
   opacity: 1;
@@ -153,6 +157,10 @@
     height: 75vh;
     clip-path: inset(25px 0 0 0 round 12px);
     border-radius: 12px;
+  }
+
+  .modal-screenshot-img.no-crop {
+    clip-path: none;
   }
 
   .modal-screenshot-img.prev {
